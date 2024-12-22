@@ -12,12 +12,15 @@ end
 -- INFO: Gets the current folder name and the git branch
 local function get_default_name()
   -- NOTE: Gets the current folder name
-  local cwd = vim.fn.getcwd():match("([^/]+)$"):lower() -- NOTE: Extracts the last folder name
+  local cwd = vim.fn.getcwd():match("([^/]+)$"):lower() 
+  -- NOTE: Extracts the last folder name
   -- NOTE: Gets the git branch name
   local branch = vim.fn.systemlist("git rev-parse --abbrev-ref HEAD")[1] or "no-branch"
 
-  cwd = cwd:gsub("%s+", "") -- NOTE: Removes white spaces
-  branch = branch:gsub("%s+", "") -- NOTE: Removes white spaces
+  cwd = cwd:gsub("%s+", "") 
+  -- NOTE: Removes white spaces
+  branch = branch:gsub("%s+", "") 
+  -- NOTE: Removes white spaces
 
   if cwd == "" then cwd = "unknown-folder" end
   if branch == "" or branch == "HEAD" then branch = "no-branch" end
